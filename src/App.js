@@ -3,14 +3,15 @@ import './App.css';
 import React, { useState } from 'react'
 // Importing the colorblock component
 import ColorBlock from './ColorBlock'
+import ColorForm from './ColorForm'//Importing Colorform component
 
 function App(){
-    let colors = [
+    let [colors, setColors] = useState([
         'violet', 'blue',
         'lightblue', 'green',
         'greenyellow', 'yellow',
         'orange', 'red'
-    ]
+    ])
     
     let colorMap = colors.map((color, i) => {
         return (
@@ -20,8 +21,12 @@ function App(){
 
     return (
         <div className="App">
-            {colorMap}
+            {colors.map((color,i)=>(
+              <ColorBlock key={i} color={color}/>
+            ))}
+            <ColorForm/>
         </div>
+        
     )
 }
 
